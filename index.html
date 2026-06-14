@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Tahun Bersuara - Teman Pro 2 RRI Bandung</title>
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary-glow: linear-gradient(45deg, #00f2fe, #4facfe);
+            --accent-glow: linear-gradient(45deg, #ff007f, #7928ca);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cabinet Grotesk', 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* Fullpage Slide Container */
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Efek Lampu Studio di Background */
+        .slide::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(150px);
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        #slide1::before { background: #00f2fe; top: 10%; left: 10%; }
+        #slide2::before { background: #ff007f; bottom: 10%; right: 10%; }
+        #slide3::before { background: #7928ca; top: 20%; right: 15%; }
+        #slide4::before { background: #00f2fe; bottom: 15%; left: 20%; }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 50px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            z-index: 1;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #00f2fe;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .glow-text-blue {
+            background: var(--primary-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glow-text-pink {
+            background: var(--accent-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* Timeline Grid buat Sejarah & Perjalanan */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 242, 254, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .feature-box h4 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Floating Navigation Bullets di Kanan */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dot:hover {
+            background: #00f2fe;
+            transform: scale(1.3);
+        }
+
+        /* Button Custom */
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 30px;
+            border-radius: 50px;
+            background: var(--primary-glow);
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 242, 254, 0.2);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 242, 254, 0.4);
+            background: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 30px 20px; }
+            h2 { font-size: 2.2rem; }
+            .grid-layout { grid-template-columns: 1fr; }
+            .nav-dots { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi Samping -->
+    <div class="nav-dots">
+        <a href="#slide1" class="dot" title="Introducing"></a>
+        <a href="#slide2" class="dot" title="Sejarah Radio"></a>
+        <a href="#slide3" class="dot" title="Perjalanan"></a>
+        <a href="#slide4" class="dot" title="Say Thanks"></a>
+    </div>
+
+    <!-- SLIDE 1: Introducing -->
+    <section id="slide1" class="slide">
+        <div class="container">
+            <div class="badge">🎙️ Slide 01 / Introducing</div>
+            <h2>Half a Decade <br><span class="glow-text-blue">On the Airwaves.</span></h2>
+            <p>Halo Teman Pro! Nggak kerasa udah 5 tahun (2021 - 2026) suara aku nemenin ruang dengar kamu lewat frekuensi Pro 2 RRI Bandung. Ini adalah lembar catatan kecil tentang perjalanan, musik, dan semua cerita yang kita bagi bersama dari balik meja siar.</p>
+            <a href="#slide2" class="btn-action">Lihat Ceritanya ↓</a>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: Sejarah Radio -->
+    <section id="slide2" class="slide">
+        <div class="container">
+            <div class="badge">📻 Slide 02 / Sejarah Radio</div>
+            <h2>Rumah bagi <br><span class="glow-text-pink">Suara Kreativitas.</span></h2>
+            <p>Pro 2 RRI Bandung bukan cuma sekadar stasiun radio atau frekuensi 96.0 FM di radio kamu. Sejak dulu, tempat ini didesain sebagai rumah, wadah, dan ruang berekspresi paling jujur buat anak muda Bandung mengeksplorasi kreativitas tanpa batas.</p>
+            
+            <div class="grid-layout">
+                <div class="feature-box">
+                    <h4>Frekuensi 96.0 FM</h4>
+                    <p style="font-size: 14px; margin-bottom: 0;">Menjangkau seluruh sudut Kota Kembang dengan energi positif dan lagu-lagu hits terbaik.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>Sahabat Anak Muda</h4>
+                    <p style="font-size: 14px; margin-bottom: 0;">Terus bertransformasi mengikuti zaman, dari era analog sampai gelombang digital masa kini.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: Perjalanan Menjadi Penyiar -->
+    <section id="slide3" class="slide">
+        <div class="container">
+            <div class="badge">✨ Slide 03 / Perjalanan</div>
+            <h2>Dari Amatir <br><span class="glow-text-blue">Hingga Mengudara.</span></h2>
+            <p>Menjadi penyiar di Pro 2 RRI Bandung adalah proses belajar yang magis. Berawal dari rasa gugup di depan mic studio 5 tahun lalu, melewati ratusan jam siaran langsung, hingga akhirnya dipercaya menemani hari-hari kalian semua.</p>
+            
+            <div class="grid-layout">
+                <div class="feature-box">
+                    <h4>2021: Langkah Awal</h4>
+                    <p style="font-size: 14px; margin-bottom: 0;">Pertama kali menekan tombol 'ON AIR' dengan tangan gemetar dan suara yang masih kaku.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>2026: 5 Tahun Bersama</h4>
+                    <p style="font-size: 14px; margin-bottom: 0;">Kini mic studio sudah seperti sahabat, dan Teman Pro sudah seperti keluarga sendiri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: Say Thanks -->
+    <section id="slide4" class="slide">
+        <div class="container" style="text-align: center;">
+            <div class="badge">🫶 Slide 04 / Say Thanks</div>
+            <h2>Haturnuhun, <br><span class="glow-text-pink">Teman Pro!</span></h2>
+            <p style="max-width: 600px; margin: 0 auto 30px auto;">Terima kasih untuk setiap request lagu, sapaan lewat WhatsApp, cerita galau di malam hari, dan kesetiaan kamu dengerin radio ini selama 5 tahun terakhir. Perjalanan ini nggak akan seindah ini tanpa kehadiran kamu.</p>
+            
+            <div style="border: 2px dashed rgba(0, 242, 254, 0.2); border-radius: 16px; padding: 25px; margin-bottom: 30px; background: rgba(0, 242, 254, 0.01);">
+                <h4 style="margin-bottom: 10px; color: #fff;">🎁 Ada Hadiah Kecil Buat Kamu!</h4>
+                <p style="font-size: 14px; margin-bottom: 0;">Sebagai tanda terima kasih, yuk klik tombol di bawah buat isi wish kamu dan dapetin giveaway spesial 5 tahun mengudara!</p>
+            </div>
+            
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdiYB3opM5iVoX2oEKTTezwqJeGyV7M3242F0AiqSAB_nYSMg/viewform?embedded=true" width="640" height="1350" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>">Ikutan Giveaway-nya! 🎉</a>
+        </div>
+    </section>
+
+</body>
+</html>
